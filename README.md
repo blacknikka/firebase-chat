@@ -21,3 +21,21 @@ npm install -g firebase-tools
 sudo npm install -g firebase-tools
 ```
 
+## deploy
+まずはプロダクトをビルドします
+
+```
+npm run build
+```
+
+このコマンドにより、`dist`フォルダにvueファイルがビルドされます。
+ビルドが正常に完了したことを確認します。
+
+```
+firebase deploy --project <projectID>
+```
+
+`<projectID>`は、firebaseの設定画面で確認ができます
+このコマンドで`dist`フォルダがデプロイされます
+この`dist`フォルダは`firebase.json`ファイルによって指定されています（デフォルトの設定では`public`フォルダをデプロイするようです）
+
