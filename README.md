@@ -39,3 +39,7 @@ firebase deploy --project <projectID>
 このコマンドで`dist`フォルダがデプロイされます
 この`dist`フォルダは`firebase.json`ファイルによって指定されています（デフォルトの設定では`public`フォルダをデプロイするようです）
 
+```
+firebase list
+```
+とやることでプロジェクト一覧が出るようです
