@@ -13,6 +13,8 @@
 <script>
 import ChatForm from '@/components/ChatForm';
 import Comment from '@/components/Comment';
+import firebaseManager from '@/Util/firebaseManager';
+
 export default {
   components: {
     ChatForm,
@@ -22,6 +24,9 @@ export default {
     conversationList () {
       return this.$store.getters.getConversationList;
     }
+  },
+  mounted () {
+    firebaseManager.fetchFromFirebase();
   }
 };
 </script>
