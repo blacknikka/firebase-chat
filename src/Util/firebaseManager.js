@@ -3,10 +3,6 @@ import 'firebase/firestore';
 
 class firebaseManager {
   constructor () {
-    console.log(process.env.API_KEY);
-    console.log(process.env.AUTH_DOMAIN);
-    console.log(process.env.PROJECT_ID);
-
     // Initialize Cloud Firestore through Firebase
     firebase.initializeApp({
       apiKey: process.env.API_KEY,
@@ -15,25 +11,20 @@ class firebaseManager {
     });
 
     this.db = firebase.firestore();
-
-    // db.collection('users').add({
-    //   first: 'Ada',
-    //   last: 'Lovelace',
-    //   born: 1815
-    // })
-    //   .then(function (docRef) {
-    //     console.log('Document written with ID: ', docRef.id);
-    //   })
-    //   .catch(function (error) {
-    //     console.error('Error adding document: ', error);
-    //   });
   }
 
+  /**
+   * 会話情報をfirebaseから取得する
+   */
   fetchFromFirebase () {
-    this.db.collection('users').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      });
+    return this.db.collection('chat').get();
+  }
+
+  async commitToFirebase ({comment, author, date}) {
+    await this.db.collection('chat').add({
+      comment,
+      author,
+      date: firebase.firestore.Timestamp.fromDate(date.toDate()),
     });
   }
 }
