@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import moment from 'moment';
+
 export default {
   data () {
     return {
@@ -31,9 +33,13 @@ export default {
   },
   methods: {
     submitComment () {
-      console.log(`message: ${this.message}`);
-      console.log(`name: ${this.name}`);
-      console.log('ここでaxiosとかで登録');
+      this.$store.commit('commitOneConversation', {
+        comment: this.message,
+        author: this.name,
+        date: moment(),
+      });
+
+      this.message = '';
     }
   },
 };
