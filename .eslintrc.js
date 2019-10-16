@@ -28,5 +28,6 @@ module.exports = {
     'quotes': ['error', 'single'],
     'semi': ["error", "always"],
     'comma-dangle': 'off',
+    'new-cap': 'off',
   }
 }
