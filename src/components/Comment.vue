@@ -41,7 +41,7 @@ export default {
 <style scoped>
 .comment-container {
   width: 100%;
-  background-color: lavender;
+  background-color: rgb(252, 247, 236);
   border: solid 1px;
   margin: 2px;
 }
@@ -53,7 +53,7 @@ export default {
 .date-content {
   float:right;
   font-size: 0.7em;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .comment-content {
