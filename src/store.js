@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import firebaseManager from '@/Util/firebaseManager';
+import moment from 'moment';
 
 Vue.use(Vuex);
 
@@ -23,9 +24,24 @@ const store = new Vuex.Store({
      */
     async fetchAllConersations ({state}) {
       const conversations = await firebaseManager.fetchFromFirebase();
+      const conversationList = [];
       conversations.forEach((conversation) => {
-        state.conversationList.push(
+        conversationList.push(
           getConversationItem(conversation.data())
+        );
+      });
+
+      conversationList.sort((conversationA, conversationB) => {
+        const dateA = moment(conversationA.date.seconds * 1000);
+        const dateB = moment(conversationB.date.seconds * 1000);
+        if (dateA.isAfter(dateB)) {
+          return 1;
+        } else {
+          return -1;
+        }
+      }).forEach((conversation) => {
+        state.conversationList.push(
+          conversation
         );
       });
     },

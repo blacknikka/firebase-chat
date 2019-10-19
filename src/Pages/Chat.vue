@@ -6,6 +6,7 @@
         :key="index"
         :comment="comment.comment"
         :author="comment.author"
+        :date="comment.date | dateFromMoment"
       ></comment>
     </div>
     <div v-else>会話はありません</div>
@@ -28,7 +29,12 @@ export default {
     },
     hasComment () {
       return this.$store.getters.getConversationList.length > 0;
-    }
+    },
+  },
+  filters: {
+    dateFromMoment (moment) {
+      return moment.toDate();
+    },
   },
   mounted () {
     this.$store.dispatch('fetchAllConersations');
