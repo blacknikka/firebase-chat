@@ -39,11 +39,7 @@ export default {
     },
   },
   mounted () {
-    this.$store.dispatch('fetchAllConersations');
-
-    intervalId = setInterval(() => {
-      this.$store.dispatch('fetchAllConersations');
-    }, 10000);
+    this.$store.dispatch('listenMessages');
   },
   destroyed () {
     if (intervalId > 0) {

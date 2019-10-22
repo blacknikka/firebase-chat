@@ -17,7 +17,7 @@ class firebaseManager {
    * 会話情報をfirebaseから取得する
    */
   fetchFromFirebase () {
-    return this.db.collection('chat').get();
+    return this.db.collection('chat').orderBy('date', 'desc').limit(12);
   }
 
   async commitToFirebase ({comment, author, date}) {
