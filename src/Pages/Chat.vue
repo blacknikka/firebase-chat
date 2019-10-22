@@ -23,7 +23,7 @@ let intervalId = 0;
 export default {
   components: {
     ChatForm,
-    Comment
+    Comment,
   },
   computed: {
     conversationList () {

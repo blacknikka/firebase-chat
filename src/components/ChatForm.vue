@@ -6,17 +6,16 @@
           class="text-input"
           v-model="message"
           placeholder="chat"
-          rows=5
-           />
+          rows="5"
+        />
       </div>
       <div>
         <input v-model="name" placeholder="your name" />
       </div>
 
-      <div class=submit-button-container>
+      <div class="submit-button-container">
         <input type="submit" value="投稿" />
       </div>
-
     </form>
   </div>
 </template>
@@ -40,7 +39,7 @@ export default {
       });
 
       this.message = '';
-    }
+    },
   },
 };
 </script>
