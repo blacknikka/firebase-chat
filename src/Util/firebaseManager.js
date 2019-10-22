@@ -30,6 +30,10 @@ class firebaseManager {
       date: firebase.firestore.Timestamp.fromDate(date.toDate()),
     });
   }
+
+  async deleteFromFirebase (deleteId) {
+    await this.db.collection('chat').doc(deleteId).delete();
+  }
 }
 
 export default new firebaseManager();

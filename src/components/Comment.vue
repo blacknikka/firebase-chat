@@ -1,14 +1,9 @@
 <template>
   <div class="comment-container">
-    <div class="author-name">
-      {{ author }}
-    </div>
-    <div class="date-content">
-      {{ date | toDateFormat }}
-    </div>
-    <div class="comment-content">
-      {{ comment }}
-    </div>
+    <div class="author-name">{{ author }}</div>
+    <div class="date-content">{{ date | toDateFormat }}</div>
+    <div class="comment-content">{{ comment }}</div>
+    <input type="button" value="削除" @click="deleteItem">
   </div>
 </template>
 
@@ -29,10 +24,19 @@ export default {
       type: Date,
       required: true,
     },
+    id: {
+      type: String,
+      required: true,
+    },
   },
   filters: {
     toDateFormat (date) {
       return moment(date).format('MM/DD hh:mm:ss');
+    },
+  },
+  methods: {
+    deleteItem () {
+      this.$store.commit('deleteOneConversation', this.id);
     },
   },
 };

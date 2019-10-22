@@ -7,6 +7,7 @@
         :comment="comment.comment"
         :author="comment.author"
         :date="comment.date | dateFromMoment"
+        :id="comment.id"
       ></comment>
     </div>
     <div v-else>会話はありません</div>
