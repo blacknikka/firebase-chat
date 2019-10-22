@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chat-container">
     <div v-if="hasComment">
       <comment
         v-for="(comment, index) in conversationList"
@@ -49,3 +49,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.chat-container {
+  width: 50vw;
+  margin: auto;
+}
+</style>
