@@ -18,6 +18,8 @@
 import ChatForm from '@/components/ChatForm';
 import Comment from '@/components/Comment';
 
+let intervalId = 0;
+
 export default {
   components: {
     ChatForm,
@@ -38,6 +40,15 @@ export default {
   },
   mounted () {
     this.$store.dispatch('fetchAllConersations');
-  }
+
+    intervalId = setInterval(() => {
+      this.$store.dispatch('fetchAllConersations');
+    }, 10000);
+  },
+  destroyed () {
+    if (intervalId > 0) {
+      clearInterval(intervalId);
+    }
+  },
 };
 </script>

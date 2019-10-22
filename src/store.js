@@ -24,6 +24,9 @@ const store = new Vuex.Store({
      */
     async fetchAllConersations ({state}) {
       const conversations = await firebaseManager.fetchFromFirebase();
+      // 配列初期化する
+      state.conversationList.splice(0);
+
       const conversationList = [];
       conversations.forEach((conversation) => {
         conversationList.push(
