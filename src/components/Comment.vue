@@ -1,13 +1,13 @@
 <template>
   <div class="comment-container">
     <div class="author-name">
-      {{author}}
+      {{ author }}
     </div>
     <div class="date-content">
-      {{date | toDateFormat}}
+      {{ date | toDateFormat }}
     </div>
     <div class="comment-content">
-      {{comment}}
+      {{ comment }}
     </div>
   </div>
 </template>
@@ -19,16 +19,16 @@ export default {
   props: {
     comment: {
       type: String,
-      required: true
+      required: true,
     },
     author: {
       type: String,
-      required: true
+      required: true,
     },
     date: {
       type: Date,
-      required: true
-    }
+      required: true,
+    },
   },
   filters: {
     toDateFormat (date) {
@@ -46,12 +46,12 @@ export default {
   margin: 2px;
 }
 .author-name {
-  float:left;
+  float: left;
   font-size: 0.7em;
   margin-left: 5px;
 }
 .date-content {
-  float:right;
+  float: right;
   font-size: 0.7em;
   margin-right: 5px;
 }

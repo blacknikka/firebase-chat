@@ -4,7 +4,7 @@ import firebaseManager from '@/Util/firebaseManager';
 
 Vue.use(Vuex);
 
-const getConversationItem = (conversation) => {
+const getConversationItem = conversation => {
   return {
     comment: conversation.comment,
     author: conversation.author,
@@ -21,11 +21,11 @@ const store = new Vuex.Store({
      * 全会話を取得する
      * @param {Object} state
      */
-    listenMessages ({state}) {
+    listenMessages ({ state }) {
       const query = firebaseManager.fetchFromFirebase();
 
-      query.onSnapshot((snapshot) => {
-        snapshot.docChanges().forEach((change) => {
+      query.onSnapshot(snapshot => {
+        snapshot.docChanges().forEach(change => {
           if (change.type === 'removed') {
             console.log('message was removed.');
           } else {
@@ -52,8 +52,7 @@ const store = new Vuex.Store({
       return state.conversationList;
     },
   },
-  plugins: [
-  ],
+  plugins: [],
 });
 
 export default store;
