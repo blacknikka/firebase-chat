@@ -25,14 +25,20 @@ const store = new Vuex.Store({
       const query = firebaseManager.fetchFromFirebase();
 
       query.onSnapshot(snapshot => {
+        // 受信した新しい会話内容を一旦配列に入れる
+        const newConversationList = [];
         snapshot.docChanges().forEach(change => {
           if (change.type === 'removed') {
             console.log('message was removed.');
           } else {
-            state.conversationList.unshift(
-              getConversationItem(change.doc.data())
-            );
+            // 最新の会話が降順にならんでいるのでunshift
+            newConversationList.unshift(getConversationItem(change.doc.data()));
           }
+        });
+
+        // それぞれの会話をstateにpushする
+        newConversationList.forEach(conversation => {
+          state.conversationList.push(conversation);
         });
       });
     },
